@@ -1,0 +1,30 @@
+<div *ngIf="students">
+    <student-observable [students]="students"></student-observable>
+</div>
+<input type="checkbox" #chb (change)="ShowStudentsByActive(chb.checked)"> Show Active Students<br>
+
+<ul class="list-group">
+    <h1>Students List
+        <button class="btn btn-primary btn-new-student" (click)="showNewStudentDetails()">Add New Student</button>
+    </h1>
+    <li *ngFor="let student of students" class="list-group-item" (click)="showDetails(student)"
+        [ngClass]="{'list-group-item-secondary': !student.active}">
+        <div class="row">
+            <div class="col-2">{{student.idStudent}}</div>
+            <div class="col-3">
+                <button class="btn btn-secondary" (click)="showDetails(student)">Edit Details</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light" (click)="deleteStudent(student)">Delete Student</button>
+            </div>
+            <div class="col-1" *ngIf="student.average > 90">
+                <i class="far fa-laugh-beam"></i>
+            </div>
+        </div>
+    </li>
+</ul>
+<br />
+<br />
+<!-- <student-details *ngIf="selectedStudent" [idStudent]="selectedStudent.idStudent" [isNewStudent]="isNewStudent"
+    (onSaveStudent)="saveStudentToList($event)" (onChangeModeStudent)="showDetails($event)">
+</student-details> -->

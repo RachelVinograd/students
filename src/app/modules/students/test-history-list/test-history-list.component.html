@@ -1,0 +1,26 @@
+<div *ngIf="testsToShow && testsToShow?.length>0">
+    <h3>Test History List</h3>
+    <div>
+        <label>Student Average: </label> {{this.average}}
+    </div>
+    <br>
+
+    <table class="table">
+        <tr>
+            <th scope="col">Code</th>
+            <th scope="col">Date</th>
+            <th scope="col">Description</th>
+            <th scope="col">Grade</th>
+        </tr>
+
+        <tbody>
+            <tr *ngFor="let test of testsToShow">
+                <th>{{test.code}}</th>
+                <td>{{test.date | date: 'dd/MM/yyyy'}}</td>
+                <td>{{test.description}}</td>
+                <td>{{test.grade}}</td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
